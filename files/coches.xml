@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="coches.xsl"?>
+<coches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="coches.xsd">
+
+    <coche matricula="1234ABC">
+        <marca>Toyota</marca>
+        <modelo>Corolla</modelo>
+        <puertas>4</puertas>
+        <color>Rojo</color>
+        <precio venta="nuevo">22000</precio>
+    </coche>
+    <coche matricula="5678XYZ">
+        <marca>Ford</marca>
+        <modelo>Focus</modelo>
+        <puertas>5</puertas>
+        <color>Azul</color>
+        <precio venta="ocasión">14500</precio>
+    </coche>
+    <coche matricula="0001DEF">
+        <marca>Volkswagen</marca>
+        <modelo>Golf</modelo>
+        <puertas>3</puertas>
+        <color>Negro</color>
+        <precio venta="segunda mano">9800</precio>
+    </coche>
+    <coche matricula="8888ABC">
+        <marca>Audi</marca>
+        <modelo>9</modelo>
+        <puertas>3</puertas>
+        <color>Azul</color>
+        <precio venta="nuevo">90000</precio>
+    </coche>
+    <coche matricula="5678AFG">
+        <marca>Audi</marca>
+        <modelo>10</modelo>
+        <puertas>5</puertas>
+        <color>Guinda</color>
+        <precio venta="nuevo">10000</precio>
+    </coche>
+    <coche matricula="1234MMM">
+        <marca>Seat</marca>
+        <modelo>124</modelo>
+        <puertas>5</puertas>
+        <color>blanco</color>
+        <precio venta="ocasión">3000</precio>
+    </coche>
+
+<coche matricula="4545BBB"><marca>Land Rover</marca><modelo>yeep</modelo><puertas>5</puertas><color>Verde</color><precio venta="nuevo">19000</precio></coche></coches>
