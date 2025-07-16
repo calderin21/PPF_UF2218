@@ -10,6 +10,7 @@ Además, deberán implementar un sistema básico de **autenticación** y **gesti
 ## Enunciado del ejercicio
 
 Se te proporciona una aplicación web funcional que permite **insertar y eliminar coches** registrados en un fichero XML.
+https://github.com/calderin21/PPF_UF2218/
 
 ### 🛠Deberás realizar las siguientes tareas:
 
@@ -88,7 +89,7 @@ Crea un archivo `README.md` (este archivo) que incluya:
 ### 8. Modo de entrega
 
 Comparte con el docente un **repositorio GitHub** con el nombre:  
-`E2_[Nombre_del_alumno]`
+`PPF_[Nombre_del_alumno]`
 
 ---
 
