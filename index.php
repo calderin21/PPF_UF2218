@@ -72,7 +72,7 @@ function opcionVenta($valor, $contenido, $coche) {
                     <div class="col-md-4">
                         <label class="form-label">Matrícula</label>
                         <input type="text" name="matricula"
-                            class="form-control" required pattern="\d{4}[A-Z]{3}"
+                            class="form-control" readonly
                             value="<?= $editarCoche['matricula'] ?>">
                     </div>
                     <div class="col-md-4">
