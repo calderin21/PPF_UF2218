@@ -1,4 +1,20 @@
 <?php
+//Iniciamos la sesión y comprobamos que el usuario se ha identificado
+session_start();
+session_regenerate_id(true);
+
+//Comprobamos si hay que cerrar la sesión
+if (isset($_REQUEST["sesion"]) && $_REQUEST["sesion"] == "cerrar")
+{
+    session_destroy();
+    header("Location: login.php");
+}
+
+//Si no hay sesión de manda al login
+if (isset($_SESSION["id"]) == false) {
+    header("Location: login.php");
+}
+
 $xmlPath = 'files/coches.xml';
 $cars = simplexml_load_file($xmlPath);
 if ($editarCocheMatricula = $_GET['matricula'] ?? '') {
@@ -21,6 +37,14 @@ function opcionVenta($valor, $contenido, $coche) {
         <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     </head>
     <body class="bg-light">
+        <div class="mt-3 me-5 d-flex justify-content-end">
+            <p class="m-2"><?= $_SESSION["tipo"]?></p>
+            <p class="m-2">-</p>
+            <p class="m-2"><?= $_SESSION["nombre"]?></p>
+            <a class="btn btn-danger" title="Cerrar sesión" href="index.php?sesion=cerrar">
+                Salir
+            </a>
+        </div>
         <div class="container py-5">
             <?php if (!$editarCocheMatricula) { ?>
 

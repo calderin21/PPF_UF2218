@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="coches.xsl"?>
+<usuarios xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="usuarios.xsd">
+    <usuario id="U001" email="david@example.com">
+        <nombre>David</nombre>
+        <password>David@2025</password>
+        <tipo>administrador</tipo>
+    </usuario>
+    <usuario id="U002" email="lector@example.com">
+        <nombre>Lector</nombre>
+        <password>Lector@2025</password>
+        <tipo>consultor</tipo>
+    </usuario>
+</usuarios>
