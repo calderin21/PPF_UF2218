@@ -15,6 +15,25 @@ if (isset($_SESSION["id"]) == false) {
     header("Location: login.php");
 }
 
+$ROL = $_SESSION["tipo"];
+
+$PUEDE = [
+    "administrador" => [
+        "consultar" => true,
+        "buscar" => true,
+        "insertar" => true,
+        "modificar" => true,
+        "eliminar" => true,
+    ],
+    "consultor" => [
+        "consultar" => true,
+        "buscar" => true,
+        "insertar" => false,
+        "modificar" => false,
+        "eliminar" => false,
+    ],
+];
+
 $xmlPath = 'files/coches.xml';
 $cars = simplexml_load_file($xmlPath);
 if ($editarCocheMatricula = $_GET['matricula'] ?? '') {
@@ -46,7 +65,7 @@ function opcionVenta($valor, $contenido, $coche) {
             </a>
         </div>
         <div class="container py-5">
-            <?php if (!$editarCocheMatricula) { ?>
+            <?php if (!$editarCocheMatricula && $PUEDE[$ROL]["modificar"]): ?>
 
             <h2 class="mb-4">Insertar Nuevo Coche</h2>
             <form action="insertar_coche.php" method="post" class="bg-white p-4 shadow rounded mb-5">
@@ -88,7 +107,7 @@ function opcionVenta($valor, $contenido, $coche) {
                 <button type="submit" class="btn btn-primary mt-4">Insertar</button>
             </form>
 
-            <?php } else { ?>
+            <?php elseif ($PUEDE[$ROL]["insertar"]): ?>
 
             <h2 class="mb-4">Editar Coche</h2>
             <form action="editar_coche.php" method="post" class="bg-white p-4 shadow rounded mb-5">
@@ -143,7 +162,7 @@ function opcionVenta($valor, $contenido, $coche) {
                 <a href="index.php" type="button" class="btn btn-secondary mt-4">Cancelar</a>
             </form>
 
-            <?php } ?>
+            <?php endif; ?>
 
             <h2 class="mb-3">Listado de Coches</h2>
             <table id="tabla-coches" class="table table-striped table-bordered">
@@ -159,8 +178,10 @@ function opcionVenta($valor, $contenido, $coche) {
                         <th>Acción</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php foreach ($cars->coche as $coche): ?>
+
                     <tr>
                         <td><?= $coche['matricula'] ?></td>
                         <td><?= $coche->marca ?></td>
@@ -170,16 +191,26 @@ function opcionVenta($valor, $contenido, $coche) {
                         <td><?= $coche->precio ?></td>
                         <td><?= $coche->precio['venta'] ?></td>
                         <td>
+                            <?php if ($PUEDE[$ROL]["modificar"]): ?>
+
                             <form action="" method="get">
                                 <input type="hidden" name="matricula" value="<?= $coche['matricula'] ?>">
                                 <button type="submit" class="btn btn-secondary btn-sm">Modificar</button>
                             </form>
+
+                            <?php endif; ?>
+
+                            <?php if ($PUEDE[$ROL]["eliminar"]): ?>
+
                             <form action="eliminar_coche.php" method="post" onsubmit="return confirm('¿Estás seguro de eliminar este coche?');">
                                 <input type="hidden" name="matricula" value="<?= $coche['matricula'] ?>">
                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                             </form>
+
+                            <?php endif; ?>
                         </td>
                     </tr>
+
                     <?php endforeach; ?>
                 </tbody>
             </table>
