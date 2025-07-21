@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'precio'    => $_POST['precio'] ?? '',
         'venta'     => $_POST['venta'] ?? ''
     ];
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
+    echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
 
     // Cargar XML existente
     $xml = simplexml_load_file($xmlPath);
@@ -53,10 +53,13 @@ echo '</pre>';
         $xml->asXML($xmlPath);
         unlink($tempPath);
 
+        print_r($xml);
+
         echo "✅ Insertado y validado.";
 
-      //  header("Location: index.php?msg=insertado");
-      //  exit;
+        echo "</ul><a href='index.php'>Volver</a>";
+        //header("Location: index.php?msg=insertado");
+        //exit;
     } else {
         echo "<p style='color:red'>❌ Error de validación XML:</p><ul>";
         foreach (libxml_get_errors() as $error) {
@@ -68,5 +71,6 @@ echo '</pre>';
     }
 } else {
     echo "❌ Método no permitido.";
+    echo "</ul><a href='index.php'>Volver</a>";
 }
 ?>

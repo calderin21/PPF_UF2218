@@ -31,8 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dom->load($tempPath);
 
     if ($dom->schemaValidate($xsdPath)) {
-        $xml->asXML($xmlPath);
+        if ($xml->asXML($xmlPath)) {
+            echo "✅ XML guardado correctamente en $xmlPath";
+        } else {
+            echo "❌ No se pudo guardar en $xmlPath";
+        }
+
         unlink($tempPath);
+        echo "</ul><a href='index.php'>Volver</a>";
         //header("Location: index.php?msg=eliminado");
         //exit;
     } else {
@@ -104,8 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         echo "✅ Modificado y validado.";
 
-        header("Location: index.php?msg=modificado");
-        exit;
+        echo "</ul><a href='index.php'>Volver</a>";
+        //header("Location: index.php?msg=modificado");
+        //exit;
     } else {
         echo "<p style='color:red'>❌ Error de validación XML:</p><ul>";
         foreach (libxml_get_errors() as $error) {
@@ -117,5 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     echo "❌ Método no permitido.";
+    echo "</ul><a href='index.php'>Volver</a>";
 }
 ?>
