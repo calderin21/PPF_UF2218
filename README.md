@@ -37,7 +37,7 @@
 5. Se valida el fichero temporal con el XSD.
 6. Finalmente, se guarda el fichero temporal como el nuevo coches.xml.
 #### buscar
-	La librería "DataTables" usada en el renderizado de la tabla ofrece un cuadro de búsqueda que permite filtrar las filas por un valor de cualquier columna.
+La librería "*DataTables*" usada en el renderizado de la tabla ofrece un cuadro de búsqueda que permite filtrar las filas por un valor de cualquier columna.
 
 ---
 ## Validaciones aplicadas
@@ -57,9 +57,12 @@ Además, cada coche posee un atributo obligatorio, llamado ***matrícula***, cuy
 ---
 ## Gestión de roles
 Al entrar a la página principal, se comprueba si existe una sesión abierta en PHP (*$_SESSION*).
-De no haber, se redirige a la página de *login*, donde el usuario debe rellenar el formulario con su correo electrónico y su contraseña. Las credenciales de los usuarios registrados aparecen en *files/usuarios.xml*.
+Si no existe, se redirige a la página de *login*, donde el usuario debe rellenar el formulario con su correo electrónico y su contraseña. Las credenciales de los usuarios registrados aparecen en *files/usuarios.xml*.
+
 Al enviarse el formulario, si se concede el acceso, se redirige a la página principal.
 Dependiendo del rol del usuario (*$_SESSION["tipo"]*), la página mostrará más o menos controles para interactuar con la tabla.
+
 Un *administrador* podrá hacer cambios en los datos; esto es, insertar coches en un formulario (o modificarlo, al pulsar el botón en la fila correspondiente); también podrá eliminar coches pulsando otro botón en la fila de la tabla.
+
 Un *consultor* solamente podrá leer los datos disponibles; consultar la tabla y filtrar las filas de la misma (con el cuadro provisto por *DataTables*) 
 
